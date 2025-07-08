@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,6 +117,7 @@
             top: 42px;
             right: 12px;
             color: var(--gray-dark);
+            cursor: pointer;
         }
 
         .btn-primary {
@@ -194,6 +194,29 @@
             color: var(--gray-dark);
         }
     </style>
+
+    <!-- Show/Hide Password Script -->
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("password");
+            const eyeIcon = document.getElementById("eye-icon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8a13.133 13.133 0 0 1-1.66 2.043C11.88 11.332 10.12 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.133 13.133 0 0 1 1.172 8z"/>
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/>
+                    </svg>`;
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M13.359 11.238C12.262 10.086 10.755 9 8 9s-4.262 1.086-5.359 2.238a.5.5 0 0 0 0 .723C3.738 13.914 5.245 15 8 15s4.262-1.086 5.359-2.238a.5.5 0 0 0 0-.723zM8 14c-2.054 0-3.31-.938-4.127-1.76C4.69 11.938 5.946 11 8 11s3.31.938 4.127 1.76C11.31 13.062 10.054 14 8 14z"/>
+                    </svg>`;
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="login-container">
@@ -218,9 +241,10 @@
             <div class="form-group">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" id="password" name="password" class="form-control" required autocomplete="current-password">
-                <div class="input-icon">
+                <div class="input-icon" onclick="togglePasswordVisibility()" id="eye-icon">
+                    <!-- default eye icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                        <path d="M13.359 11.238C12.262 10.086 10.755 9 8 9s-4.262 1.086-5.359 2.238a.5.5 0 0 0 0 .723C3.738 13.914 5.245 15 8 15s4.262-1.086 5.359-2.238a.5.5 0 0 0 0-.723zM8 14c-2.054 0-3.31-.938-4.127-1.76C4.69 11.938 5.946 11 8 11s3.31.938 4.127 1.76C11.31 13.062 10.054 14 8 14z"/>
                     </svg>
                 </div>
             </div>
